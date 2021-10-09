@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 public class CheckoutTable {
 
     @Id
-    @GeneratedValue
     @Column(name = "checkout_id")
     private long checkoutId;
 
@@ -43,6 +42,7 @@ public class CheckoutTable {
     public void setProducts(List<ProductTable> products) {
         this.products = products;
     }
+
     public CheckoutModel toModel(){
         return new CheckoutModel(
                 this.checkoutId,

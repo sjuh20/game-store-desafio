@@ -5,7 +5,6 @@ package br.com.supera.game.store.gamestoredesafio.entity;
 import br.com.supera.game.store.gamestoredesafio.model.ProductModel;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
@@ -13,7 +12,6 @@ import java.math.BigDecimal;
 public class ProductTable {
 
     @Id
-    @GeneratedValue
     private long id;
     private String name;
     private BigDecimal price;
