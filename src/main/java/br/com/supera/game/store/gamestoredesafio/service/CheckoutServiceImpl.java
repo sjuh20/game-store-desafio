@@ -5,11 +5,11 @@ import br.com.supera.game.store.gamestoredesafio.model.CheckoutModel;
 import br.com.supera.game.store.gamestoredesafio.model.ProductModel;
 import br.com.supera.game.store.gamestoredesafio.repository.CheckoutRepository;
 import br.com.supera.game.store.gamestoredesafio.repository.ProductRepository;
+import br.com.supera.game.store.gamestoredesafio.utils.CompareFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -34,7 +34,7 @@ public class CheckoutServiceImpl implements CheckoutService {
                 .collect(Collectors.toList());
 
         List<BigDecimal> values = getTotalProductValues(products);
-        CheckoutModel model = new CheckoutModel(1, products);
+        CheckoutModel model = new CheckoutModel(UUID.randomUUID().toString(), new ArrayList<>());
         CheckoutModel result = checkoutRepository.save(model.toTable()).toModel();
         calculateValues(values, result);
         return result;
@@ -49,18 +49,18 @@ public class CheckoutServiceImpl implements CheckoutService {
     }
 
     @Override
-    public CheckoutModel addProduct(long checkoutID, long productId, String sort) {
+    public CheckoutModel addProduct(String checkoutID, long productId, String sort) {
         ProductModel productModel = productRepository.findById(productId).get().toModel();
         CheckoutModel checkoutModel = checkoutRepository.findById(checkoutID).get().toModel();
 
         List<ProductModel> products = checkoutModel.getProducts();
         products.add(productModel);
-
+        Collections.sort(products, CompareFactory.getComparator(sort));
         return getCheckoutModel(checkoutModel, products);
     }
 
     @Override
-    public CheckoutModel removeProduct(long checkoutID, long productId, String sort) {
+    public CheckoutModel removeProduct(String checkoutID, long productId, String sort) {
         CheckoutModel checkoutModel = checkoutRepository.findById(checkoutID).get().toModel();
 
         for (ProductModel product : checkoutModel.getProducts()) {
@@ -79,8 +79,8 @@ public class CheckoutServiceImpl implements CheckoutService {
     }
 
     @Override
-    public CheckoutModel getCheckout(long checkoutId) {
-        return null;
+    public CheckoutModel getCheckout(String checkoutId) {
+        return checkoutRepository.getById(checkoutId).toModel();
     }
 
     private CheckoutModel getCheckoutModel(CheckoutModel checkoutModel, List<ProductModel> products) {

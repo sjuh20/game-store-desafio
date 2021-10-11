@@ -12,11 +12,11 @@ public interface CheckoutService {
 
     public CheckoutModel createCheckout(List<Long> ids);
 
-    public CheckoutModel addProduct(long checkoutID, long productId, String sort);
+    public CheckoutModel addProduct(String checkoutID, long productId, String sort);
 
-    public CheckoutModel removeProduct(long checkoutID, long productId, String sort);
+    public CheckoutModel removeProduct(String checkoutID, long productId, String sort);
 
-    public CheckoutModel getCheckout(long checkoutId);
+    public CheckoutModel getCheckout(String checkoutId);
 
     public BigDecimal calculateFreight(List<BigDecimal> values);
 

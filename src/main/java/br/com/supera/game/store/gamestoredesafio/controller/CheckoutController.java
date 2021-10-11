@@ -23,7 +23,7 @@ public class CheckoutController {
 
     @PostMapping("/add-product")
     public CheckoutModel addProduct(
-            @RequestParam("checkout-id") long checkoutId,
+            @RequestParam("checkout-id") String checkoutId,
             @RequestParam("product-id") long productId,
             @RequestParam("sort") String sort) {
 
@@ -33,7 +33,7 @@ public class CheckoutController {
 
     @PostMapping("/remove-product")
     public CheckoutModel removeProduct(
-            @RequestParam("checkout-id") long checkoutId,
+            @RequestParam("checkout-id") String checkoutId,
             @RequestParam("product-id") long productId,
             @RequestParam("sort") String sort) {
 

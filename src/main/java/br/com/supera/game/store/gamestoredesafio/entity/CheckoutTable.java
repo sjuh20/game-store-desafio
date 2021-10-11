@@ -11,7 +11,7 @@ public class CheckoutTable {
 
     @Id
     @Column(name = "checkout_id")
-    private long checkoutId;
+    private String checkoutId;
 
     @ManyToMany
     @JoinTable(
@@ -22,7 +22,7 @@ public class CheckoutTable {
 
     private List<ProductTable> products;
 
-    public CheckoutTable(long checkoutId, List<ProductTable> products) {
+    public CheckoutTable(String checkoutId, List<ProductTable> products) {
         this.checkoutId = checkoutId;
         this.products = products;
     }
@@ -30,11 +30,11 @@ public class CheckoutTable {
     public CheckoutTable() {
     }
 
-    public long getCheckoutId() {
+    public String getCheckoutId() {
         return checkoutId;
     }
 
-    public void setCheckoutId(long checkoutId) {
+    public void setCheckoutId(String checkoutId) {
         this.checkoutId = checkoutId;
     }
 

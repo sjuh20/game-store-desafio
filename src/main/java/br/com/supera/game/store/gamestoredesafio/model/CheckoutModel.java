@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
 
 public class CheckoutModel {
 
-    private long checkoutId;
+    private String checkoutId;
     private BigDecimal freight;
     private BigDecimal total;
     private BigDecimal subTotal;
     private List<ProductModel> products;
 
-    public CheckoutModel(long checkoutId, BigDecimal freight, BigDecimal total, BigDecimal subTotal, List<ProductModel> products) {
+    public CheckoutModel(String checkoutId, BigDecimal freight, BigDecimal total, BigDecimal subTotal, List<ProductModel> products) {
         this.checkoutId = checkoutId;
         this.freight = freight;
         this.total = total;
@@ -22,21 +22,21 @@ public class CheckoutModel {
         this.products = products;
     }
 
-    public CheckoutModel(long checkoutId, List<ProductModel> products) {
+    public CheckoutModel(String checkoutId, List<ProductModel> products) {
         this.checkoutId = checkoutId;
         this.products = products;
     }
 
     public CheckoutModel(List<ProductModel> products) {
         this.products = products;
-        this.checkoutId = 0;
+        this.checkoutId = "";
     }
 
-    public long getCheckoutId() {
+    public String getCheckoutId() {
         return checkoutId;
     }
 
-    public void setCheckoutId(long checkoutId) {
+    public void setCheckoutId(String checkoutId) {
         this.checkoutId = checkoutId;
     }
 
