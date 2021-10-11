@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "56c5fe0b-6a8b-4d6c-9c21-356d34be35eb",
+		"name": "Game Store Colletion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":312,\n    \"name\":\"Super Mario Odyssey\",\n    \"price\": 197.88,\n    \"score\": 100,\n    \"image\":\"super-mario-odyssey.png\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/product/find?sort=price",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"find"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "price"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save All Products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": 312,\n        \"name\": \"Super Mario Odyssey\",\n        \"price\": 197.88,\n        \"score\": 100,\n        \"image\": \"super-mario-odyssey.png\"\n    },\n    {\n        \"id\": 201,\n        \"name\": \"Call Of Duty Infinite Warfare\",\n        \"price\": 49.99,\n        \"score\": 80,\n        \"image\": \"call-of-duty-infinite-warfare.png\"\n    },\n    {\n        \"id\": 102,\n        \"name\": \"The Witcher III Wild Hunt\",\n        \"price\": 119.5,\n        \"score\": 250,\n        \"image\": \"the-witcher-iii-wild-hunt.png\"\n    },\n    {\n        \"id\": 99,\n        \"name\": \"Call Of Duty WWII\",\n        \"price\": 249.99,\n        \"score\": 205,\n        \"image\": \"call-of-duty-wwii.png\"\n    },\n    {\n        \"id\": 12,\n        \"name\": \"Mortal Kombat XL\",\n        \"price\": 69.99,\n        \"score\": 150,\n        \"image\": \"mortal-kombat-xl.png\"\n    },\n    {\n        \"id\": 74,\n        \"name\": \"Shards of Darkness\",\n        \"price\": 71.94,\n        \"score\": 400,\n        \"image\": \"shards-of-darkness.png\"\n    },\n    {\n        \"id\": 31,\n        \"name\": \"Terra Média: Sombras de Mordor\",\n        \"price\": 79.99,\n        \"score\": 50,\n        \"image\": \"terra-media-sombras-de-mordor.png\"\n    },\n    {\n        \"id\": 420,\n        \"name\": \"FIFA 18\",\n        \"price\": 195.39,\n        \"score\": 325,\n        \"image\": \"fifa-18.png\"\n    },\n    {\n        \"id\": 501,\n        \"name\": \"Horizon Zero Dawn\",\n        \"price\": 115.8,\n        \"score\": 290,\n        \"image\": \"horizon-zero-dawn.png\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/product/save-all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"save-all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Checkout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/checkout/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checkout",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product in Checkout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    201\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/checkout/add-product?checkout-id=5d800d5c-6cdb-4d5d-be83-70eaaf6b70a3&product-id=420&sort=name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checkout",
+						"add-product"
+					],
+					"query": [
+						{
+							"key": "checkout-id",
+							"value": "5d800d5c-6cdb-4d5d-be83-70eaaf6b70a3"
+						},
+						{
+							"key": "product-id",
+							"value": "420"
+						},
+						{
+							"key": "sort",
+							"value": "name"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Product in Checkout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    201\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/checkout/remove-product?checkout-id=5d800d5c-6cdb-4d5d-be83-70eaaf6b70a3&product-id=12&sort=score",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checkout",
+						"remove-product"
+					],
+					"query": [
+						{
+							"key": "checkout-id",
+							"value": "5d800d5c-6cdb-4d5d-be83-70eaaf6b70a3"
+						},
+						{
+							"key": "product-id",
+							"value": "12"
+						},
+						{
+							"key": "sort",
+							"value": "score"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
