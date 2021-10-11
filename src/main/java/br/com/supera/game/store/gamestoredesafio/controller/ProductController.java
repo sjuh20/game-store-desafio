@@ -11,14 +11,19 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
 
-    @Autowired
-    private ProductService service;
+    private final ProductService service;
+
+    public ProductController(ProductService service) {
+        this.service = service;
+    }
 
     @PostMapping()
     public ProductModel registerProduct(@RequestBody ProductModel product) {
         return service.registerProduct(product);
     }
+
     ;
+
     @PostMapping("/save-all")
     public void registerAllProducts(@RequestBody List<ProductModel> products) {
         service.registerAllProducts(products);

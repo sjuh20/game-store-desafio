@@ -19,13 +19,16 @@ public class CheckoutTable {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "checkout_id")
     )
+
     private List<ProductTable> products;
 
     public CheckoutTable(long checkoutId, List<ProductTable> products) {
         this.checkoutId = checkoutId;
         this.products = products;
     }
-    public CheckoutTable(){}
+
+    public CheckoutTable() {
+    }
 
     public long getCheckoutId() {
         return checkoutId;
@@ -43,7 +46,7 @@ public class CheckoutTable {
         this.products = products;
     }
 
-    public CheckoutModel toModel(){
+    public CheckoutModel toModel() {
         return new CheckoutModel(
                 this.checkoutId,
                 this.products.stream().map(ProductTable::toModel).collect(Collectors.toList())
